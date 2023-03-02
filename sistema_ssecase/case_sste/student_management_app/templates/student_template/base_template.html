@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Student Management System | Student Dashboard</title>
+  <title>Studiante templates</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -48,7 +48,9 @@
         </li>
       </ul>
 
-      <h4 style="margin-left: 10px; margin-top: 5px;">Sistema de seguimiento de Trayectoria Escolar | CASE</h4>
+      <div class="col-md-6">
+        <img src="{% static 'dist/img/headerlogos.png' %}" alt="caselogos" class="ml-auto">
+      </div>
 
       <ul class="navbar-nav ml-auto">
       
@@ -93,7 +95,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{% url 'student_home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'student_home' %}">Inicio</a></li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -154,6 +156,7 @@
 {% endblock custom_js %}
 
 </body>
+
 
 <footer class="main-footer">
   <strong>Centro de Aprendizaje y Servicios Estudiantiles CASE

@@ -48,7 +48,12 @@
         </li>
       </ul>
 
-      <h4 style="margin-left: 10px; margin-top: 5px;">Student Management System | Staff Dashboard</h4>
+      <div class="col-md-6">
+        <img src="{% static 'dist/img/headerlogos.png' %}" alt="caselogos" class="ml-auto">
+      </div>
+
+      
+
 
       <ul class="navbar-nav ml-auto">
       
@@ -60,12 +65,12 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
           
           <a href="{% url 'staff_profile' %}" class="dropdown-item">
-            <i class="fas fa-user-edit mr-2"></i> Update Profile
+            <i class="fas fa-user-edit mr-2"></i> Actualizar perfil
           </a>
           
           <div class="dropdown-divider"></div>
           <a href="{% url 'logout_user' %}" class="dropdown-item">
-            <i class="fas fa-power-off mr-2"></i> Logout
+            <i class="fas fa-power-off mr-2"></i> Salir
           </a>
           <div class="dropdown-divider"></div>
         </div>
@@ -90,11 +95,6 @@
                 {% block page_title %}
                 {% endblock page_title %}
               </h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{% url 'admin_home' %}">Home</a></li>
-              </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -154,4 +154,12 @@
 {% endblock custom_js %}
 
 </body>
+
+
+<footer class="main-footer">
+  <strong>Centro de Aprendizaje y Servicios Estudiantiles CASE
+  <div class="float-right d-none d-sm-inline-block">
+    <b>Version</b> 1.0
+  </div>
+</footer>
 </html>
