@@ -792,3 +792,15 @@ def student_profile(requtest):
 
 
 
+
+def baja_alumnos_view(request):
+    leaves = LeaveReportStudent.objects.all()
+    context = {
+        "leaves": leaves
+    }
+    return render(request, 'hod_template/baja_alumnos.html', context)
+
+
+
+def serviciosCase(request):
+    return render(request, "hod_template/servicios.html")

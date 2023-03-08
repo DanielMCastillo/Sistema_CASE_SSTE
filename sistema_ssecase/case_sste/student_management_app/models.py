@@ -97,14 +97,45 @@ class AttendanceReport(models.Model):
     objects = models.Manager()
 
 
+MOTIVOSBAJAS = [
+    ('1', 'A SU FAMILIA NO LE GUSTABA LA CARRERA'),
+    ('2', 'ACTITUD DE PROFESORES'),
+    ('3', 'AMBIENTE ESTUDIANTIL'),
+    ('4', 'BAJA ACADÉMICA POR DESEMPEÑO ESCOLAR'),
+    ('5', 'BAJA ACADÉMICA POR REPROBACIÓN'),
+    ('6', 'BAJA ACADÉMICA POR DESEMPEÑO ESCOLAR'),
+    ('7', 'CAMBIO DE PAÍS'),
+    ('8', 'CAMPO LABORAL DIFÍCIL'),
+    ('9', 'DESEMPEÑO ACADÉMICO INADECUADO'),
+    ('10', 'DIFICULTAD ACADÉMICA POR LA MODALIDAD EN LÍNEA'),
+    ('11', 'DIFICULTAD DE RELACIONARSE CON COMPAÑEROS/MAESTROS'),
+    ('12', 'DIFICULTAD EN LAS MATERIAS'),
+    ('13', 'ESTADO CIVIL'),
+    ('14', ' ESTADO DE ÁNIMO'),
+    ('15', 'FALTA DE HABILIDADES DE APRENDIZAJE'),
+    ('16', 'HORARIOS COMPLICADOS'),
+    ('17', 'INFLUENCIA DE PADRES/AMIGOS EN LA ELECCIÓN DE CARRERA'),
+    ('18', 'LUGAR DE DOMICILIO'),
+    ('19', 'MÉTODOS DE ENSEÑANZA'),
+    ('20', 'MOTIVOS PERSONALES'),
+    ('21', 'NO ERA MI VOCACIÓN'),
+    ('22', 'PÉRDIDA DE INTERÉS POR LA CARRERA'),
+    ('23', 'PERFIL DE LA CARRERA'),
+    ('24', 'PROBLEMAS PERSONALES'),
+    ('25', 'REPROBACIÓN'),
+    ('26', 'SER ACEPTADO EN OTRA UNIVERSIDAD'),
+    ('27', 'SITUACIÓN ECONÓMICA COMPLICADA'),
+    ('28', 'TENER QUE TRABAJAR'),
+    ('29', 'OTRO'),
+    
+]
+
 class LeaveReportStudent(models.Model):
     id = models.AutoField(primary_key=True)
     student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
     leave_date = models.CharField(max_length=255)
     leave_message = models.TextField()
     leave_status = models.IntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
     objects = models.Manager()
 
 
@@ -330,3 +361,27 @@ class Responses(models.Model):
     response = models.ManyToManyField(Answer, related_name = "response")
     
 
+
+class BajasAlumnos(models.Model):
+    semestre = models.CharField(max_length=80)
+    nombre_alumno = models.CharField(max_length=80)
+    programa_academico = models.CharField(max_length=50)
+    matricula = models.CharField(max_length=15)
+    fecha_baja = models.DateTimeField(auto_now_add = True)
+    motivos_abandono = models.TextField( )
+    tipo_baja = models.CharField(max_length=2, choices=MOTIVOSBAJAS)
+    
+    
+    
+    
+    
+    
+#
+#class LeaveReportStudent(models.Model):
+ #   id = models.AutoField(primary_key=True)
+  #  student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
+   # leave_date = models.CharField(max_length=255)
+    #leave_message = models.TextField()
+    #leave_status = models.IntegerField(default=0)
+    #motivo_baja = models.CharField(max_length=2, choices=MOTIVOSBAJAS)
+    #objects = models.Manager()
