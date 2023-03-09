@@ -46,15 +46,6 @@
               </a>
             </li>
             
-            <li class="nav-item">
-              {% url 'add_staff' as add_staff %}
-              <a href="{{ add_staff }}" class="nav-link {% if request.path == add_staff %} active {% endif %}">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Añadir Responsables
-                </p>
-              </a>
-            </li>
 
             <li class="nav-item">
               {% url 'manage_student' as manage_student %}
@@ -67,15 +58,6 @@
               </a>
             </li>
 
-            <li class="nav-item">
-              {% url 'add_student' as add_student %}
-              <a href="{{ add_student }}" class="nav-link {% if request.path == add_student %} active {% endif %}">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Añadir estudiantes
-                </p>
-              </a>
-            </li>
 
             <li class="nav-item">
               {% url 'manage_course' as manage_course %}
@@ -84,16 +66,6 @@
                 <i class="nav-icon fas fa-chalkboard"></i>
                 <p>
                   Servicios
-                </p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-            {% url 'add_course' as add_course %}
-              <a href="{{ add_course }}" class="nav-link {% if request.path == add_course %} active {% endif %}">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Añadir servicios
                 </p>
               </a>
             </li>
@@ -178,16 +150,6 @@
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Bajas de estudiantes
-                </p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              {% url 'staff_leave_view' as staff_leave_view %}
-              <a href="{{ staff_leave_view }}" class="nav-link {% if request.path == staff_leave_view %} active {% endif %}">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Bajas de responsables
                 </p>
               </a>
             </li>

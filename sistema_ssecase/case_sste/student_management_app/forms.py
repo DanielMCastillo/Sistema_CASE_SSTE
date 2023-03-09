@@ -1,5 +1,6 @@
 from django import forms 
 from django.forms import Form
+from student_management_app.models import BajasAlumnos
 from student_management_app.models import Courses, SessionYearModel
 from student_management_app.models import Form
 
@@ -102,3 +103,21 @@ OPCIONES = [
     ('3', 'Escritorio'),
 ]
 
+
+
+class BajasForm(forms.ModelForm):
+    class Meta:
+        model = BajasAlumnos
+        fields = '__all__'
+        widgets = {
+            "semestre": forms.TextInput(attrs={'class': 'form-control'}),
+            "nombre_alumno": forms.TextInput(attrs={'class': 'form-control'}),
+            "programa_academico": forms.TextInput(attrs={'class': 'form-control'}),
+            "matricula": forms.TextInput(attrs={'class': 'form-control'}),
+            "fecha_baja": DateInput(), 
+            "motivos_abandono": forms.Textarea(attrs={'class': 'form-control'}),
+            "tipo_baja": forms.Select(attrs={'class': 'form-control'}),
+            "t_d": forms.Select(attrs={'class': 'form-control'}),
+            
+            
+        }

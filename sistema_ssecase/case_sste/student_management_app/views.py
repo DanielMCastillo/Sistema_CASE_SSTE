@@ -4,7 +4,6 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.core.mail import send_mail, BadHeaderError
 from student_management_app.EmailBackEnd import EmailBackEnd
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -16,6 +15,8 @@ from django.core import serializers
 import json
 import random
 import string
+from django.contrib.auth.decorators import login_required
+from .forms import BajasForm
 
 
 def home(request):
@@ -840,3 +841,5 @@ def FourZeroThree(request):
 
 def FourZeroFour(request):
     return render(request, "error/404.html")
+
+

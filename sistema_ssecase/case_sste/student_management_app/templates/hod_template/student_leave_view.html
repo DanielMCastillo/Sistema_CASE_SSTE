@@ -1,7 +1,7 @@
 {% extends 'hod_template/base_template.html' %}
 
 {% block page_title %}
-    Leave Apply by Students
+    Registro de bajas de estudiantes
 {% endblock page_title %}
 
 {% block main_content %}
@@ -11,52 +11,45 @@
 <section class="content">
         <div class="container-fluid">
 
+            <a class="btn btn-primary" href="{% url 'baja_alumnos' %}" role="button">+ Nueva baja</a> <br/>&nbsp;
+
             <div class="row">
                 <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Leave Apply by Students</h3>
+                            <h3 class="card-title">Bajas de estudiantes</h3>
                         </div>
                         <!-- /.card-header -->
 
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Student ID</th>
-                                    <th>Student Name</th>
-                                    <th>Leave Date</th>
-                                    <th>Leave Message</th>
-                                    <th>Applied On</th>
-                                    <th>Action</th>
-                                </tr>
+                                    <tr>
+                                        <th>Semestre</th>
+                                        <th>Nombre de alumno</th>
+                                        <th>Programa</th>
+                                        <th>Matricula</th>
+                                        <th>Fecha de baja</th>
+                                        <th>Motivos de abandono</th>
+                                        <th>Motivo de baja</th>
+                                        <th>Tipo</th>
+                                    </tr>
                                 </thead>
-
-                                {% for leave in leaves %}
                                 <tbody>
-                                <tr>
-                                    <td>{{ leave.id }}</td>
-                                    <td>{{ leave.student_id.admin.id }}</td>
-                                    <td>{{ leave.student_id.admin.first_name }} {{ feedback.student_id.admin.last_name }}</td> 
-                                    <td>{{ leave.leave_date }}</td>
-                                    <td>{{ leave.leave_message }}</td>
-                                    <td>{{ leave.created_at }}</td>
-                                    <td>
-                                        {% if leave.leave_status == 0 %}
-                                            <a href="{% url 'student_leave_approve' leave_id=leave.id %}" class="btn btn-success">Approve</a>
-                                            <a href="{% url 'student_leave_reject' leave_id=leave.id %}" class="btn btn-danger">Reject</a>
-                                        {% elif leave.leave_status == 1 %}
-                                            <button class="btn btn-warning" disabled="disabled">Approved</button>
-                                        {% else %}
-                                            <button class="btn btn-danger" disabled="disabled">Rejected</button>
-                                        {% endif %}
-                                        
-                                    </td>
-                                </tr>
+                                    {% for baja in bajas %}
+                                        <tr>
+                                            <td>{{ baja.semestre }}</td>
+                                            <td>{{ baja.nombre_alumno }}</td>
+                                            <td>{{ baja.programa_academico }}</td>
+                                            <td>{{ baja.matricula }}</td>
+                                            <td>{{ baja.fecha_baja }}</td>
+                                            <td>{{ baja.motivos_abandono }}</td>
+                                            <td>{{baja.get_tipo_baja_display }}</td>
+                                            <td>{{ baja.get_t_d_display }}</td>
+                                        </tr>
+                                    {% endfor %}
                                 </tbody>
-                                {% endfor %}
 
                             </table>
                         </div>
@@ -70,7 +63,7 @@
         </div><!-- /.container-fluid -->
       </section>
 
-      
+
 
   {% endblock main_content %}
 

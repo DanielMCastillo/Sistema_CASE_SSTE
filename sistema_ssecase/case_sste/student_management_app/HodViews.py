@@ -6,9 +6,10 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 import json
+from .models import BajasAlumnos
 
 from student_management_app.models import CustomUser, Staffs, Courses, Subjects, Students, SessionYearModel, FeedBackStudent, FeedBackStaffs, LeaveReportStudent, LeaveReportStaff, Attendance, AttendanceReport
-from .forms import AddStudentForm, EditStudentForm
+from .forms import AddStudentForm, BajasForm, EditStudentForm
 
 
 def admin_home(request):
@@ -656,9 +657,9 @@ def staff_feedback_message_reply(request):
 
 
 def student_leave_view(request):
-    leaves = LeaveReportStudent.objects.all()
+    bajas = BajasAlumnos.objects.all()
     context = {
-        "leaves": leaves
+        "bajas": bajas
     }
     return render(request, 'hod_template/student_leave_view.html', context)
 
@@ -804,3 +805,17 @@ def baja_alumnos_view(request):
 
 def serviciosCase(request):
     return render(request, "hod_template/servicios.html")
+
+
+
+def bajasAlumnos(request):
+    if request.method == 'POST':
+        form = BajasForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Alumno dado de baja!")
+            return redirect('baja_alumnos')
+    else:
+        form = BajasForm()
+    return render(request, 'hod_template/baja_alumnos.html', {'form': form})
+

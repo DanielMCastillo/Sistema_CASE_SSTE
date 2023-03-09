@@ -274,6 +274,13 @@ SERVICIOS = [
     
 ]
 
+TIPOBAJA = [
+    ('1', 'Temporal'),
+    ('2', 'Definitiva'),
+
+    
+]
+
 class Diagnostico(models.Model):
     id = models.AutoField(primary_key=True)
     genero = models.CharField(max_length=1, choices=GENERO)
@@ -368,20 +375,15 @@ class BajasAlumnos(models.Model):
     programa_academico = models.CharField(max_length=50)
     matricula = models.CharField(max_length=15)
     fecha_baja = models.DateTimeField(auto_now_add = True)
-    motivos_abandono = models.TextField( )
-    tipo_baja = models.CharField(max_length=2, choices=MOTIVOSBAJAS)
+    motivos_abandono = models.TextField('Motivos de abandono',null=True)
+    tipo_baja = models.CharField('Motivo de baja' , max_length=2, choices=MOTIVOSBAJAS)
+    t_d = models.CharField('Tipo de baja', max_length=2, choices=TIPOBAJA)
     
     
     
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        ordering=['nombre_alumno']
     
-    
-    
-#
-#class LeaveReportStudent(models.Model):
- #   id = models.AutoField(primary_key=True)
-  #  student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
-   # leave_date = models.CharField(max_length=255)
-    #leave_message = models.TextField()
-    #leave_status = models.IntegerField(default=0)
-    #motivo_baja = models.CharField(max_length=2, choices=MOTIVOSBAJAS)
-    #objects = models.Manager()
